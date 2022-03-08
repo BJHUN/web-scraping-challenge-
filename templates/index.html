@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission To Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- link to my style sheet -->
+<link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+
+    <!-- Jumbotron -->
+    <div class="jumbotron text-center">
+      <h1>Mission To Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+    <!-- News, title, and paragraph -->
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Latest Mars News</h2>
+        <h5>{{ mars.news_title }}</h5>
+        <p>{{ mars.news_paragraph }}</p>
+      </div>
+    </div>
+
+    <!-- feature image and mars facts -->
+    <div class="row">
+      <div class="col-md-8">
+        <h2>Featured Mars Image</h2>
+       <img src="{{ mars.featured_image }}" alt="featured image">
+      </div>
+      
+        <div class="col-md-4">
+          <h4>Mars Facts</h4>
+          {{ mars.mars_facts | safe}}
+
+
+    </div>
+
+
+
+
+    <!-- mars hemispheres -->
+
+
+
+  </div>
+  </div>
+</body>
+
+</html>
