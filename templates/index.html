@@ -8,8 +8,8 @@
   <title>Mission To Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- link to my style sheet -->
-<link rel="stylesheet" href="../static/css/style.css">
+  <!-- link to my style sheet -->
+  <link rel="stylesheet" href="../static/css/style.css">
 </head>
 
 <body>
@@ -34,25 +34,38 @@
     <div class="row">
       <div class="col-md-8">
         <h2>Featured Mars Image</h2>
-       <img src="{{ mars.featured_image }}" alt="featured image">
+        <img src="{{ mars.featured_image }}" alt="featured image">
       </div>
-      
-        <div class="col-md-4">
-          <h4>Mars Facts</h4>
-          {{ mars.mars_facts | safe}}
 
-
+      <div class="col-md-4">
+        <h4>Mars Facts</h4>
+        {{ mars.mars_facts | safe}}
+      </div>
+      <!-- mars hemispheres -->
     </div>
-
-
-
-
-    <!-- mars hemispheres -->
-
-
-
+  </div>
+  <h4 class="text-center"><b>Mars Hemispheres</b></h4>
+  </div>
+  {% for hemisphere in mars.hemisphere %}
+  <div class="col-md-3">
+    <div class="thumbnail">
+      <img src="{{hemisphere.img_url| default('static/images/error.png', true)}}" alt="..." />
+      <div class="caption">
+        <h3>{{ hemisphere.Title}}</h3>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
   </div>
   </div>
+</body>
+
+</html>
+
+
+
+</div>
+</div>
 </body>
 
 </html>
