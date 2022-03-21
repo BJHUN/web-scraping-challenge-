@@ -17,8 +17,10 @@ def scrape_info():
         'news_title': news_title,
         'news_paragraph': news_paragraph,
         'featured_image': featured_image(browser),
-        'mars_facts': mars_facts()
-    }
+        'mars_facts': mars_facts(),
+        'hemisphere': hemispheres(browser)
+        
+        }
 
     return mars_data
 
@@ -77,3 +79,50 @@ def mars_facts():
 
     return mars_facts
 
+def hemispheres(browser):
+
+    url = 'https://marshemispheres.com/'
+    browser.visit(url)
+    html = browser.html
+    soup = bs(html, 'html.parser')
+    time.sleep(1)
+
+    results = soup.find_all('div', class_='description')
+    Hemisphere_img_urls = []
+    # Loop through returned results
+    for result in results:
+        # Error handling
+        try:
+            # Identify and return title of listing
+            title = result.find('h3').text
+            # get the image link
+            img_link = result.a['href']
+            url = f"https://marshemispheres.com/" + img_link
+            browser.visit(url)
+            html = browser.html
+            soup = bs(html, 'html.parser')
+            output = soup.find('img', class_= "wide-image")
+            download_link = output['src']
+            img_url = f"https://marshemispheres.com/" + download_link
+                # Print results only if title, price, and link are available
+
+            if (title and download_link):
+                # print(title)
+                # print(f"https://marshemispheres.com/" + download_link)
+                # print('-'*107)
+                
+                hemis_dictionary = { 
+                    'Title' :title, 
+                    'img_url': img_url}
+                
+                Hemisphere_img_urls.append(hemis_dictionary)
+                
+        except Exception as e:
+            print(e)
+
+        return Hemisphere_img_urls
+
+if __name__ == "__main__":
+
+    # If running as script, print scraped data
+    print(scrape_info())
