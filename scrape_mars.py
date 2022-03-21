@@ -112,15 +112,15 @@ def hemispheres(browser):
                 # print('-'*107)
                 
                 hemis_dictionary = { 
-                    'Title' :title, 
-                    'img_url': img_url}
-                
-                Hemisphere_img_urls.append(hemis_dictionary)
+                'Title' :title, 
+                'img_url': img_url,
+                }
+            Hemisphere_img_urls.append(hemis_dictionary)
                 
         except Exception as e:
             print(e)
 
-        return Hemisphere_img_urls
+    return Hemisphere_img_urls
 
 if __name__ == "__main__":
 
